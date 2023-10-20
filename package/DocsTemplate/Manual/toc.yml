@@ -1,0 +1,8 @@
+### YamlMime:TableOfContent
+items:
+- name: Manual
+  href: index.md
+  items:
+  - name: Getting Started
+    href: GettingStarted.md
+memberLayout: SamePage

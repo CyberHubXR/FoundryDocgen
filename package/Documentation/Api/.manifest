@@ -6,11 +6,11 @@
   "Foundry.Docgen.FoundryDocgenConfig.DocfxMetadata": "Foundry.Docgen.FoundryDocgenConfig.yml",
   "Foundry.Docgen.FoundryDocgenConfig.DocfxOutputPath": "Foundry.Docgen.FoundryDocgenConfig.yml",
   "Foundry.Docgen.FoundryDocgenConfig.DocfxTemplate": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.Load(System.String)": "Foundry.Docgen.FoundryDocgenConfig.yml",
   "Foundry.Docgen.FoundryDocgenConfig.MetadataPair": "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
   "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.Key": "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
   "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.Value": "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
   "Foundry.Docgen.FoundryDocgenConfig.Save": "Foundry.Docgen.FoundryDocgenConfig.yml",
-  "Foundry.Docgen.FoundryDocgenConfig.load(System.String)": "Foundry.Docgen.FoundryDocgenConfig.yml",
   "Foundry.Docgen.FoundryDocgenWindow": "Foundry.Docgen.FoundryDocgenWindow.yml",
   "Foundry.Docgen.FoundryDocgenWindow.OpenWindow": "Foundry.Docgen.FoundryDocgenWindow.yml"
 }

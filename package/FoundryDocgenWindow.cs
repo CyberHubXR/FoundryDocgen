@@ -81,7 +81,7 @@ namespace Foundry.Docgen
             createDocsRoot.Add(message);
 
             var docfxOutputPath = new TextField("DocFx Output Path");
-            docfxOutputPath.value = "docfx_output";
+            docfxOutputPath.value = "_site";
             createDocsRoot.Add(docfxOutputPath);
             
             var docfxConfigPath = new TextField("DocFx Config Path");
@@ -95,20 +95,31 @@ namespace Foundry.Docgen
             
             var createButton = new Button(() =>
             {
-                var config = FoundryDocgenConfig.Create(Path.Join(path, "Documentation", "FoundryDocgenConfig.json"));
-                config.DocfxOutputPath = docfxOutputPath.value;
-                config.DocfxConfigPath = docfxConfigPath.value;
+                FoundryDocgenConfig config;
+                // If we're using a template we'll load the config from there, otherwise create a new one
+                if (createTemplateFiles.value)
+                {
+                    CreateTemplateDocs(path);
+                    config = FoundryDocgenConfig.Load(Path.Join(path, "Documentation", "FoundryDocgenConfig.json"));
+                    config.DocfxOutputPath = docfxOutputPath.value;
+                    config.DocfxConfigPath = docfxConfigPath.value;
+                    config.Save();
+                }
+                else
+                {
+                    config = FoundryDocgenConfig.Create(Path.Join(path, "Documentation", "FoundryDocgenConfig.json"));
+                    config.DocfxOutputPath = docfxOutputPath.value;
+                    config.DocfxConfigPath = docfxConfigPath.value;
                 
-                Directory.CreateDirectory(Path.Join(path, "Documentation"));
-                config.Save();
+                    Directory.CreateDirectory(Path.Join(path, "Documentation"));
+                    config.Save();
+                }
                 root.Remove(createDocsRoot);
                 
                 var docPath = Path.Join(path, "Documentation");
                 var docfxConfigFullPath = Path.Join(docPath, docfxConfigPath.value);
                 if (!Directory.Exists(docfxConfigFullPath))
                     CreateTemplateDocFxConfig(docfxConfigFullPath);
-                if(createTemplateFiles.value)
-                    CreateTemplateDocs(path);
                 DrawDocgenUI(root, path);
             });
             createButton.text = "Create Docs";
@@ -118,7 +129,7 @@ namespace Foundry.Docgen
         private void DrawGenerateDocsUI(VisualElement root, string path)
         {
             var assetPath = Path.Join(path, "Documentation", "FoundryDocgenConfig.json");
-            var asset = FoundryDocgenConfig.load(assetPath);
+            var asset = FoundryDocgenConfig.Load(assetPath);
             var generateDocsRoot = new Box();
             generateDocsRoot.style.backgroundColor = Color.clear;
             root.Add(generateDocsRoot);
@@ -205,14 +216,14 @@ namespace Foundry.Docgen
             
             generateDocsRoot.Add(new ToolbarSpacer());
             generateDocsRoot.Add(new Label("Actions:"));
-            var serveToggle = new Toggle("Preview Docs");
+            var serveToggle = new Toggle("Auto Preview Docs On Generation");
             serveToggle.value = false;
             serveToggle.tooltip = "Start a local server to preview the docs when they are generated";
             generateDocsRoot.Add(serveToggle);
             
             var generateButton = new Button(() =>
             {
-                GenerateDocs(path, asset, true);
+                GenerateDocs(path, asset, serveToggle.value);
             });
             generateButton.text = "Generate Docs";
             generateDocsRoot.Add(generateButton);
@@ -255,8 +266,10 @@ namespace Foundry.Docgen
 
         private void GenerateDocs(string path, FoundryDocgenConfig config, bool serve = false)
         {
-            if(_compileProcess?.HasExited ?? false)
+            if(!_compileProcess?.HasExited ?? false)
                 _compileProcess.Kill();
+            if(!_serveProcess?.HasExited ?? false)
+                _serveProcess.Kill();
             var docsPath = Path.Join(path, "Documentation");
                 
             // Copy the artifacts we need into here
@@ -274,7 +287,7 @@ namespace Foundry.Docgen
             }
             
             var templateFlag = string.IsNullOrEmpty(config.DocfxTemplate) ? "" : $"-t {config.DocfxTemplate}";
-            var serveFlag = serve ? "--serve" : "";
+            var serveFlag = serve ? "--serve --open-browser" : "";
             if (serve && (!_serveProcess?.HasExited ?? false))
                 _serveProcess.Kill();
 
@@ -290,6 +303,8 @@ namespace Foundry.Docgen
         {
             if(!_serveProcess?.HasExited ?? false)
                 _serveProcess.Kill();
+            if(!_compileProcess?.HasExited ?? false)
+                _compileProcess.Kill();
             
             var docsPath = Path.Join(path, "Documentation");
             var processInfo = new ProcessStartInfo("docfx");
@@ -306,45 +321,7 @@ namespace Foundry.Docgen
         private void CreateTemplateDocs(string path)
         {
             var docPath = Path.Join(path, "Documentation");
-            Directory.CreateDirectory(Path.Join(docPath, "Api"));
-            Directory.CreateDirectory(Path.Join(docPath, "Manual"));
-            Directory.CreateDirectory(Path.Join(docPath, "Media"));
-            File.WriteAllText(Path.Join(docPath, "Api", "index.md"), "# API Reference");
-            
-            // Create the suggested docs structure from https://docs.unity3d.com/Manual/cus-document.html
-            File.WriteAllText(Path.Join(docPath, "index.md"), @"# Documentation
-## Overview
-Provide a brief, high-level explanation of the package.
-
-## Package Contents
-Include the location of important files you want the user to know about. For example, if this is a sample package containing textures, models, and materials separated by sample group, you might want to provide the folder location of each group.
-
-## Installation instructions
-You can point to the official Package Manager installation instructions, but if you have any special installation requirements, such as installing samples, add them here.
-
-## Requirements
-This is a good place to add hardware or software requirements, including which versions of the Unity Editor this package is compatible with.
-
-## Limitations
-If your package has any known limitations, you can list them here. If not, or if the limitations are trivial, exclude this section.
-
-## Workflows
-Include a list of steps that the user can easily follow that demonstrates how to use the feature. You can include screenshots to help describe how to use the feature.
-
-## Advanced topics
-This is where you can provide detailed information about what you are providing to users. This is ideal if you don’t want to overwhelm the user with too much information up front.
-
-## Reference
-If you have a user interface with a lot of properties, you can provide the details in a reference section. Using tables is a good way to provide quick access to specific property descriptions.
-
-## Samples
-For packages that include sample files, you can include detailed information on how the user can use these sample files in their projects and scenes.
-
-## Tutorials
-If you want to provide walkthroughs for complicated procedures, you can also add them here. Use step-by-step instructions and include images if they can help the user understand.
-");
-            File.WriteAllText(Path.Join(docPath, "toc.yml"), "### YamlMime:TableOfContent\nitems:\n- name: Home\n  href: index.md\n- name: Manual\n  href: Manual/\n- name: Api\n  href: Api/");
-            File.WriteAllText(Path.Join(docPath, ".gitignore"), "Temp\n");
+            FileUtil.CopyFileOrDirectory("Packages/com.cyberhub.foundry.docgen/DocsTemplate", docPath);
         }
         
         private void CreateTemplateDocFxConfig(string path)
@@ -373,15 +350,15 @@ If you want to provide walkthroughs for complicated procedures, you can also add
          },
          {
            ""files"": [
-             ""api/toc.yml"",
-             ""api/**/*.yml"",
-             ""api/**/*.md""
+             ""Api/toc.yml"",
+             ""Api/**/*.yml"",
+             ""Api/**/*.md""
            ]
          },
          {
            ""files"": [
-             ""manual/**/*.md"",
-             ""manual/**/*.yml""
+             ""Manual/**/*.md"",
+             ""Manual/**/*.yml""
            ]
          }
        ],

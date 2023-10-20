@@ -10,8 +10,8 @@ items:
   - Foundry.Docgen.FoundryDocgenConfig.DocfxMetadata
   - Foundry.Docgen.FoundryDocgenConfig.DocfxOutputPath
   - Foundry.Docgen.FoundryDocgenConfig.DocfxTemplate
+  - Foundry.Docgen.FoundryDocgenConfig.Load(System.String)
   - Foundry.Docgen.FoundryDocgenConfig.Save
-  - Foundry.Docgen.FoundryDocgenConfig.load(System.String)
   langs:
   - csharp
   - vb
@@ -161,40 +161,40 @@ items:
     return:
       type: System.Collections.Generic.List{Foundry.Docgen.FoundryDocgenConfig.MetadataPair}
     content.vb: Public DocfxMetadata As List(Of FoundryDocgenConfig.MetadataPair)
-- uid: Foundry.Docgen.FoundryDocgenConfig.load(System.String)
-  commentId: M:Foundry.Docgen.FoundryDocgenConfig.load(System.String)
-  id: load(System.String)
+- uid: Foundry.Docgen.FoundryDocgenConfig.Load(System.String)
+  commentId: M:Foundry.Docgen.FoundryDocgenConfig.Load(System.String)
+  id: Load(System.String)
   parent: Foundry.Docgen.FoundryDocgenConfig
   langs:
   - csharp
   - vb
-  name: load(string)
-  nameWithType: FoundryDocgenConfig.load(string)
-  fullName: Foundry.Docgen.FoundryDocgenConfig.load(string)
+  name: Load(string)
+  nameWithType: FoundryDocgenConfig.Load(string)
+  fullName: Foundry.Docgen.FoundryDocgenConfig.Load(string)
   type: Method
   source:
     remote:
       path: package/FoundryDocgenConfig.cs
       branch: main
       repo: https://github.com/FoundryXR/FoundryDocgen
-    id: load
+    id: Load
     path: ../FoundryDocgenConfig.cs
     startLine: 28
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
   syntax:
-    content: public static FoundryDocgenConfig load(string path)
+    content: public static FoundryDocgenConfig Load(string path)
     parameters:
     - id: path
       type: System.String
     return:
       type: Foundry.Docgen.FoundryDocgenConfig
-    content.vb: Public Shared Function load(path As String) As FoundryDocgenConfig
-  overload: Foundry.Docgen.FoundryDocgenConfig.load*
-  nameWithType.vb: FoundryDocgenConfig.load(String)
-  fullName.vb: Foundry.Docgen.FoundryDocgenConfig.load(String)
-  name.vb: load(String)
+    content.vb: Public Shared Function Load(path As String) As FoundryDocgenConfig
+  overload: Foundry.Docgen.FoundryDocgenConfig.Load*
+  nameWithType.vb: FoundryDocgenConfig.Load(String)
+  fullName.vb: Foundry.Docgen.FoundryDocgenConfig.Load(String)
+  name.vb: Load(String)
 - uid: Foundry.Docgen.FoundryDocgenConfig.Create(System.String)
   commentId: M:Foundry.Docgen.FoundryDocgenConfig.Create(System.String)
   id: Create(System.String)
@@ -632,12 +632,12 @@ references:
     name: Generic
     isExternal: true
     href: https://learn.microsoft.com/dotnet/api/system.collections.generic
-- uid: Foundry.Docgen.FoundryDocgenConfig.load*
-  commentId: Overload:Foundry.Docgen.FoundryDocgenConfig.load
-  href: Foundry.Docgen.FoundryDocgenConfig.html#Foundry.Docgen.FoundryDocgenConfig.load(System.String)
-  name: load
-  nameWithType: FoundryDocgenConfig.load
-  fullName: Foundry.Docgen.FoundryDocgenConfig.load
+- uid: Foundry.Docgen.FoundryDocgenConfig.Load*
+  commentId: Overload:Foundry.Docgen.FoundryDocgenConfig.Load
+  href: Foundry.Docgen.FoundryDocgenConfig.html#Foundry.Docgen.FoundryDocgenConfig.Load(System.String)
+  name: Load
+  nameWithType: FoundryDocgenConfig.Load
+  fullName: Foundry.Docgen.FoundryDocgenConfig.Load
 - uid: Foundry.Docgen.FoundryDocgenConfig
   commentId: T:Foundry.Docgen.FoundryDocgenConfig
   parent: Foundry.Docgen

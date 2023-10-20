@@ -26,7 +26,7 @@ namespace Foundry.Docgen
 
         private string _path;
         
-        public static FoundryDocgenConfig load(string path)
+        public static FoundryDocgenConfig Load(string path)
         {
             var asset = JsonUtility.FromJson<FoundryDocgenConfig>(File.ReadAllText(path));
             asset._path = path;
