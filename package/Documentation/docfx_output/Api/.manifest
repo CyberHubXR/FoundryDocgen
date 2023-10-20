@@ -1,0 +1,16 @@
+{
+  "Foundry.Docgen": "Foundry.Docgen.yml",
+  "Foundry.Docgen.FoundryDocgenConfig": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.Create(System.String)": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.DocfxConfigPath": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.DocfxMetadata": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.DocfxOutputPath": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.DocfxTemplate": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.MetadataPair": "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.Key": "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.Value": "Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.Save": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenConfig.load(System.String)": "Foundry.Docgen.FoundryDocgenConfig.yml",
+  "Foundry.Docgen.FoundryDocgenWindow": "Foundry.Docgen.FoundryDocgenWindow.yml",
+  "Foundry.Docgen.FoundryDocgenWindow.OpenWindow": "Foundry.Docgen.FoundryDocgenWindow.yml"
+}

@@ -1,0 +1,15 @@
+{
+  "name": "com.cyberhub.foundry.docgen",
+  "displayName": "Foundry Docgen",
+  "version": "0.0.1-preview",
+  "unity": "2021.3",
+  "description": "Provides a toolset for generating documentation for Unity Packages.",
+  "keywords": [
+    "foundry",
+    "docgen",
+    "documentation",
+    "generation",
+    "docfx"
+  ],
+  "category": "Documentation"
+}

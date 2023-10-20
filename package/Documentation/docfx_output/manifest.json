@@ -1,0 +1,162 @@
+{
+  "homepages": [],
+  "source_base_path": "H:/Unity Projects/CyberHub/FoundryDocgen/package/Documentation",
+  "xrefmap": "xrefmap.yml",
+  "files": [
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Api/Foundry.Docgen.FoundryDocgenConfig.MetadataPair.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Api/Foundry.Docgen.FoundryDocgenConfig.MetadataPair.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Api/Foundry.Docgen.FoundryDocgenConfig.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Api/Foundry.Docgen.FoundryDocgenConfig.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Api/Foundry.Docgen.FoundryDocgenWindow.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Api/Foundry.Docgen.FoundryDocgenWindow.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "ManagedReference",
+      "source_relative_path": "Api/Foundry.Docgen.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Api/Foundry.Docgen.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Api/index.md",
+      "output": {
+        ".html": {
+          "relative_path": "Api/index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "Api/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Api/toc.html"
+        },
+        ".json": {
+          "relative_path": "Api/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "Manual/GettingStarted.md",
+      "output": {
+        ".html": {
+          "relative_path": "Manual/GettingStarted.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "Manual/toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "Manual/toc.html"
+        },
+        ".json": {
+          "relative_path": "Manual/toc.json"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Media/foundry_icon.ico",
+      "output": {
+        "resource": {
+          "relative_path": "Media/foundry_icon.ico"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Media/foundry_icon.ico.meta",
+      "output": {
+        "resource": {
+          "relative_path": "Media/foundry_icon.ico.meta"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Media/foundry_icon.png",
+      "output": {
+        "resource": {
+          "relative_path": "Media/foundry_icon.png"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Resource",
+      "source_relative_path": "Media/foundry_icon.png.meta",
+      "output": {
+        "resource": {
+          "relative_path": "Media/foundry_icon.png.meta"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Conceptual",
+      "source_relative_path": "index.md",
+      "output": {
+        ".html": {
+          "relative_path": "index.html"
+        }
+      },
+      "version": ""
+    },
+    {
+      "type": "Toc",
+      "source_relative_path": "toc.yml",
+      "output": {
+        ".html": {
+          "relative_path": "toc.html"
+        },
+        ".json": {
+          "relative_path": "toc.json"
+        }
+      },
+      "version": ""
+    }
+  ],
+  "version_info": {},
+  "groups": [
+    {
+      "xrefmap": "xrefmap.yml"
+    }
+  ]
+}

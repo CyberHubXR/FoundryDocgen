@@ -1,0 +1,31 @@
+{
+    "DocfxOutputPath": "docfx_output",
+    "DocfxConfigPath": "docfx.json",
+    "DocfxTemplate": "",
+    "DocfxMetadata": [
+        {
+            "Key": "_appTitle",
+            "Value": "Foundry Docgen"
+        },
+        {
+            "Key": "_appName",
+            "Value": "Foundry Docgen"
+        },
+        {
+            "Key": "_appFooter",
+            "Value": "Foundry Docgen Docs "
+        },
+        {
+            "Key": "_appLogoPath",
+            "Value": "Media/foundry_icon.png"
+        },
+        {
+            "Key": "_appFaviconPath",
+            "Value": "Media/foundry_icon.ico"
+        },
+        {
+            "Key": "_disableContribution",
+            "Value": "true"
+        }
+    ]
+}

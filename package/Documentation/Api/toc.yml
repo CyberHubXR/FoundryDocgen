@@ -1,0 +1,12 @@
+### YamlMime:TableOfContent
+items:
+- uid: Foundry.Docgen
+  name: Foundry.Docgen
+  items:
+  - uid: Foundry.Docgen.FoundryDocgenConfig
+    name: FoundryDocgenConfig
+  - uid: Foundry.Docgen.FoundryDocgenConfig.MetadataPair
+    name: FoundryDocgenConfig.MetadataPair
+  - uid: Foundry.Docgen.FoundryDocgenWindow
+    name: FoundryDocgenWindow
+memberLayout: SamePage
