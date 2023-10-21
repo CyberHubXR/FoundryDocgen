@@ -26,7 +26,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: FoundryDocgenConfig
     path: ../FoundryDocgenConfig.cs
-    startLine: 10
+    startLine: 11
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -71,7 +71,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: DocfxOutputPath
     path: ../FoundryDocgenConfig.cs
-    startLine: 13
+    startLine: 14
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -98,7 +98,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: DocfxConfigPath
     path: ../FoundryDocgenConfig.cs
-    startLine: 14
+    startLine: 15
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -125,7 +125,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: DocfxTemplate
     path: ../FoundryDocgenConfig.cs
-    startLine: 15
+    startLine: 16
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -152,7 +152,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: DocfxMetadata
     path: ../FoundryDocgenConfig.cs
-    startLine: 24
+    startLine: 25
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -179,7 +179,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: Load
     path: ../FoundryDocgenConfig.cs
-    startLine: 28
+    startLine: 29
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -213,7 +213,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: Create
     path: ../FoundryDocgenConfig.cs
-    startLine: 35
+    startLine: 36
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -247,7 +247,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: Save
     path: ../FoundryDocgenConfig.cs
-    startLine: 42
+    startLine: 43
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen

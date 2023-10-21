@@ -21,7 +21,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: MetadataPair
     path: ../FoundryDocgenConfig.cs
-    startLine: 17
+    startLine: 18
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -66,7 +66,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: Key
     path: ../FoundryDocgenConfig.cs
-    startLine: 20
+    startLine: 21
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen
@@ -93,7 +93,7 @@ items:
       repo: https://github.com/FoundryXR/FoundryDocgen
     id: Value
     path: ../FoundryDocgenConfig.cs
-    startLine: 21
+    startLine: 22
   assemblies:
   - Foundry.Docgen
   namespace: Foundry.Docgen

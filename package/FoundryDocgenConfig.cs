@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
@@ -43,6 +44,15 @@ namespace Foundry.Docgen
         public void Save()
         {
             File.WriteAllText(_path, JsonUtility.ToJson(this, true));
+            
+            var metadataPath = Path.Join(Path.GetDirectoryName(_path), Path.GetDirectoryName(DocfxConfigPath), "metadata.json");
+            Dictionary<string, string> metadata = new();
+            foreach (var pair in DocfxMetadata)
+            {
+                metadata.Add(pair.Key, pair.Value);
+            }
+            
+            File.WriteAllText(metadataPath, JsonConvert.SerializeObject(metadata));
         }
     }
 }

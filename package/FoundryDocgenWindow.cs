@@ -279,20 +279,16 @@ namespace Foundry.Docgen
             
             var configPath = Path.Join(docsPath, config.DocfxConfigPath);
             var outputPath = Path.Join(docsPath, config.DocfxOutputPath);
-
-            string metadata = "";
-            foreach (var data in config.DocfxMetadata)
-            {
-                metadata += $"-m \"{data.Key}\"=\"{data.Value}\" ";
-            }
             
             var templateFlag = string.IsNullOrEmpty(config.DocfxTemplate) ? "" : $"-t {config.DocfxTemplate}";
             var serveFlag = serve ? "--serve --open-browser" : "";
             if (serve && (!_serveProcess?.HasExited ?? false))
                 _serveProcess.Kill();
 
-            var processInfo = new ProcessStartInfo("docfx");
-            processInfo.Arguments = $" \"{configPath}\" -o \"{outputPath}\" -o \"{outputPath}\" {templateFlag} {metadata} {serveFlag}";
+            var processInfo = new ProcessStartInfo("cmd.exe");
+            processInfo.Arguments = $"/k docfx \"{configPath}\" -o \"{outputPath}\" -o \"{outputPath}\" {templateFlag} {serveFlag}";
+            processInfo.WindowStyle = ProcessWindowStyle.Normal;
+            processInfo.UseShellExecute = true;
             processInfo.WorkingDirectory = docsPath;
 
             Debug.Log("Generating docs for " + path + " with command: docfx " + processInfo.Arguments);
@@ -371,7 +367,7 @@ namespace Foundry.Docgen
        ],
        ""overwrite"": """",
        ""dest"": """",
-       ""globalMetadataFiles"": [],
+       ""globalMetadataFiles"": [""metadata.json""],
        ""template"": [
          ""default"", 
          ""modern""
