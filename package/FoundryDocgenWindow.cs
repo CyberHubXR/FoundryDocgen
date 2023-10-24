@@ -242,9 +242,7 @@ namespace Foundry.Docgen
 
             var editDocs = new Button(() =>
             {
-                ProcessStartInfo openDocs = new ProcessStartInfo("explorer.exe");
-                openDocs.Arguments = Path.Join(path, "Documentation");
-                Process.Start(openDocs);
+                EditorUtility.OpenWithDefaultApp(Path.Join(path, "Documentation"));
             });
             editDocs.Add(new Label("Edit Docs"));
             generateDocsRoot.Add(editDocs);
