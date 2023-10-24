@@ -24,6 +24,12 @@ namespace Foundry.Docgen
             window.Show();
         }
 
+        public FoundryDocgenWindow()
+        {
+            EditorApplication.projectChanged += () => Repaint();
+            AssemblyReloadEvents.afterAssemblyReload += () => Repaint();
+        }
+
         private void CreateGUI()
         {
             DrawPackageList(rootVisualElement);
@@ -233,6 +239,15 @@ namespace Foundry.Docgen
             });
             previewButton.text = "Preview Docs";
             generateDocsRoot.Add(previewButton);
+
+            var editDocs = new Button(() =>
+            {
+                ProcessStartInfo openDocs = new ProcessStartInfo("explorer.exe");
+                openDocs.Arguments = Path.Join(path, "Documentation");
+                Process.Start(openDocs);
+            });
+            editDocs.Add(new Label("Edit Docs"));
+            generateDocsRoot.Add(editDocs);
         }
 
         [Serializable]
