@@ -11,5 +11,8 @@
     "generation",
     "docfx"
   ],
-  "category": "Documentation"
+  "category": "Documentation",
+  "dependencies": {
+    "com.unity.nuget.newtonsoft-json": "3.2.0"
+  }
 }
