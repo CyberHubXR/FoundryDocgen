@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Object = UnityEngine.Object;
@@ -53,6 +54,45 @@ namespace Foundry.Docgen
             }
             
             File.WriteAllText(metadataPath, JsonConvert.SerializeObject(metadata));
+        }
+
+
+        struct DocfxSrcMetadata
+        {
+            public struct Src
+            {
+                public string src;
+                public string[] files;
+            }
+            public List<Src> src;
+            public string dest;
+        }
+
+        public void SetDocfxSources(string srcDir, string[] files)
+        {
+            string configPath = Path.Join(Path.GetDirectoryName(_path), DocfxConfigPath);
+            var json = JObject.Parse(File.ReadAllText(configPath));
+            
+            DocfxSrcMetadata metadata = new DocfxSrcMetadata();
+            metadata.src = new List<DocfxSrcMetadata.Src>
+            {
+                new DocfxSrcMetadata.Src
+                {
+                    src = srcDir,
+                    files = files
+                }
+            };
+            metadata.dest = "Api";
+            
+            if (json.TryGetValue("metadata", out JToken md))
+            {
+                var metas = md.Value<JToken>();
+                metas[0] = JObject.FromObject(metadata);
+            }
+            else
+                json.Add("metadata", JArray.FromObject(new List<DocfxSrcMetadata>{ metadata}));
+            
+            File.WriteAllText(configPath, json.ToString(Formatting.Indented));
         }
     }
 }

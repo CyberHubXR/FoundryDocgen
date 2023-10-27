@@ -5,6 +5,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
 using UnityEditor;
+using UnityEditor.Build;
 using UnityEditor.PackageManager;
 using UnityEditor.PackageManager.Requests;
 using UnityEditor.UIElements;
@@ -254,7 +255,7 @@ namespace Foundry.Docgen
             public string name;
         }
 
-        private List<string> GetCsprojForPackage(string path)
+        private string[] GetCsprojForPackage(string path)
         {
             List<string> csproj = new();
             List<string> asmdefNames = new();
@@ -264,14 +265,16 @@ namespace Foundry.Docgen
                 asmdefNames.Add(asmdefAsset.name);
             }
 
+            string projectRoot = Path.Join(Application.dataPath, "..");
+
             foreach (var asmdefName in asmdefNames)
             {
-                var csprojPath = Path.Join(Application.dataPath, "..", asmdefName + ".csproj");
-                if (File.Exists(csprojPath))
+                var csprojPath = asmdefName + ".csproj";
+                if (File.Exists(Path.Join(projectRoot, csprojPath)))
                     csproj.Add(csprojPath);
             }
 
-            return csproj;
+            return csproj.ToArray();
         }
 
         private Process _compileProcess;
@@ -285,10 +288,11 @@ namespace Foundry.Docgen
                 _serveProcess.Kill();
             var docsPath = Path.Join(path, "Documentation");
                 
-            // Copy the artifacts we need into here
-            Directory.CreateDirectory(Path.Join(docsPath, "Temp"));
-            foreach (var csproj in GetCsprojForPackage(path))
-                File.Copy(csproj, Path.Join(docsPath,  "Temp",  Path.GetFileName(csproj)), true);
+            // Configure docfx to read the correct csproj files
+            config.SetDocfxSources(
+                Path.GetRelativePath(docsPath, Path.Join(Application.dataPath, "..")),
+                GetCsprojForPackage(path));
+            
             
             var configPath = Path.Join(docsPath, config.DocfxConfigPath);
             var outputPath = Path.Join(docsPath, config.DocfxOutputPath);
@@ -298,8 +302,10 @@ namespace Foundry.Docgen
             if (serve && (!_serveProcess?.HasExited ?? false))
                 _serveProcess.Kill();
 
+            string defineConstraints = PlayerSettings.GetScriptingDefineSymbols(NamedBuildTarget.FromBuildTargetGroup(EditorUserBuildSettings.selectedBuildTargetGroup));
+
             var processInfo = new ProcessStartInfo("cmd.exe");
-            processInfo.Arguments = $"/k docfx \"{configPath}\" -o \"{outputPath}\" -o \"{outputPath}\" {templateFlag} {serveFlag}";
+            processInfo.Arguments = $"/k docfx metadata \"{configPath}\" --property DefineConstants={defineConstraints} && docfx build  \"{configPath}\" -o \"{outputPath}\" {templateFlag} {serveFlag}";
             processInfo.WindowStyle = ProcessWindowStyle.Normal;
             processInfo.UseShellExecute = true;
             processInfo.WorkingDirectory = docsPath;
